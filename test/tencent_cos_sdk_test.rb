@@ -13,29 +13,37 @@ class TencentCosSdkTest < Minitest::Test
         @path = '1/abc.txt'
     end
 
-    def test_configure_should_be_valid
+    def test_that_it_has_a_version_number
+        refute_nil ::TencentCosSdk::VERSION
+    end
+
+    def test_conf_should_be_valid
         [:app_id, :secret_id, :secret_key, :host, :parent_path].each do |attr|
             assert TencentCosSdk.conf.send(attr) != nil
         end
     end
 
-    def test_that_it_has_a_version_number
-        refute_nil ::TencentCosSdk::VERSION
-    end
-
     def test_put_body
-        TencentCosSdk.put @path, body: 'abc123'
+        response = TencentCosSdk.put @path, body: 'abc123'
+        assert_equal 200, response.code
     end
 
     def test_put_by_file
-        TencentCosSdk.put @path, file: __FILE__
+        response = TencentCosSdk.put @path, file: __FILE__
+        assert_equal 200, response.code
     end
 
     def test_get
-        TencentCosSdk.get @path
+        TencentCosSdk.put @path, body: 'abc123'
+
+        response = TencentCosSdk.get @path
+        assert_equal 200, response.code
     end
 
     def test_delete
-        TencentCosSdk.delete @path
+        TencentCosSdk.put @path, body: 'abc123'
+
+        response = TencentCosSdk.delete @path
+        assert_equal 204, response.code
     end
 end
