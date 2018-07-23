@@ -6,12 +6,12 @@ require "tencent_cos_sdk/version"
 Gem::Specification.new do |spec|
   spec.name          = "tencent_cos_sdk"
   spec.version       = TencentCosSdk::VERSION
-  spec.authors       = ["xia"]
-  spec.email         = ["xiaxiongjun@bit-ware.co.jp"]
+  spec.authors       = ["xia xiongjun"]
+  spec.email         = ["xxjapp@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{tencent cos sdk for ruby}
+  spec.description   = %q{tencent cos sdk for ruby}
+  spec.homepage      = "https://github.com/xxjapp/tencent_cos_sdk"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -35,4 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "openssl", "~> 2.1"
+  spec.add_development_dependency "colorize", "~> 0.8"
+  spec.add_development_dependency "rest-client", "~> 2.0"
 end
