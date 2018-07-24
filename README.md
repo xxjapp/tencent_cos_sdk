@@ -1,8 +1,6 @@
 # TencentCosSdk
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tencent_cos_sdk`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Tencent cos sdk for ruby
 
 ## Installation
 
@@ -22,7 +20,24 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Configuration
+
+```ruby
+TencentCosSdk.configure do |conf|
+    conf.secret_id      = ENV['SECRET_ID_1']
+    conf.secret_key     = ENV['SECRET_KEY_1']
+    conf.host           = ENV['HOST_1']
+    conf.parent_path    = '/app_name_1'
+end
+```
+
+2. Call APIs
+```ruby
+response = TencentCosSdk.put '1/abc.txt', body: 'abc123'
+response = TencentCosSdk.put '1/abc.txt', file: __FILE__
+response = TencentCosSdk.get '1/abc.txt'
+response = TencentCosSdk.delete '1/abc.txt'
+```
 
 ## Development
 

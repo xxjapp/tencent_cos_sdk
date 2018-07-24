@@ -1,6 +1,6 @@
 module TencentCosSdk
     class Configuration
-        attr_accessor :app_id, :secret_id, :secret_key, :host, :parent_path
+        attr_accessor :secret_id, :secret_key, :host, :parent_path
     end
 
     class << self
