@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-1. Configuration
+1. Configure TencentCosSdk using your own SECRET_ID, SECRET_KEY, HOST and parent_path
 
 ```ruby
 TencentCosSdk.configure do |conf|
@@ -31,7 +31,8 @@ TencentCosSdk.configure do |conf|
 end
 ```
 
-2. Call APIs
+2. Call APIs to upload, download or delete files
+
 ```ruby
 response = TencentCosSdk.put '1/abc.txt', body: 'abc123'
 response = TencentCosSdk.put '1/abc.txt', file: __FILE__
