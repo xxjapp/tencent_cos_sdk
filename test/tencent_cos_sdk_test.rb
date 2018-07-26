@@ -17,7 +17,7 @@ class TencentCosSdkTest < Minitest::Test
     end
 
     def test_conf_should_be_valid
-        [:secret_id, :secret_key, :host, :parent_path].each do |attr|
+        [:secret_id, :secret_key, :host].each do |attr|
             assert TencentCosSdk.conf.send(attr) != nil
         end
     end

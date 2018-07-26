@@ -4,12 +4,12 @@ require 'tencent_cos_sdk/utils'
 
 module TencentCosSdk
     class Request
-        attr_accessor :http_method, :uri, :headers, :body, :file
+        attr_accessor :http_method, :path, :headers, :body, :file
         attr_accessor :response, :time_used
 
         def initialize options
             self.http_method    = options[:http_method]
-            self.uri            = options[:uri]
+            self.path           = options[:path]
             self.headers        = options[:headers] || {}
             self.body           = options[:body]
             self.file           = options[:file]
@@ -26,7 +26,7 @@ module TencentCosSdk
 
                 options = {
                     method:     http_method,
-                    url:        "https://#{TencentCosSdk.conf.host}#{uri}",
+                    url:        TencentCosSdk.url(path),
                     headers:    headers,
                     verify_ssl: false
                 }
@@ -47,11 +47,10 @@ module TencentCosSdk
                 puts response_description
             end
 
-            file_path = uri["#{TencentCosSdk.conf.parent_path}/".length..-1]
-
-            m = /attachment; filename\*="UTF-8''(.+)"/.match response.headers[:content_disposition]
-            FileUtils.mkdir_p File.dirname(file_path)
-            IO.binwrite(file_path, response) if m
+            if /attachment; filename\*="UTF-8''(.+)"/.match response.headers[:content_disposition]
+                FileUtils.mkdir_p File.dirname(path)
+                IO.binwrite(path, response)
+            end
 
             response
         end
@@ -60,7 +59,7 @@ module TencentCosSdk
 
         def description
             s = "\n\n"
-            s << "#{http_method.upcase} #{uri} HTTP/1.1\n".light_magenta
+            s << "#{http_method.upcase} #{TencentCosSdk.uri(@path)} HTTP/1.1\n".light_magenta
 
             headers.each do |k, v|
                 s << "#{k}: #{v}\n".red

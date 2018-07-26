@@ -2,6 +2,16 @@ require 'cgi'
 require 'openssl'
 
 module TencentCosSdk
+    class << self
+        def uri(path)
+            "#{TencentCosSdk.conf.parent_path.to_s}/#{path}"
+        end
+
+        def url(path)
+            "https://#{TencentCosSdk.conf.host}#{uri path}"
+        end
+    end
+
     class Request
         def get_authorization
             sign_time           = "#{Time.now.to_i - 3600};#{Time.now.to_i + 3600}"
@@ -26,7 +36,7 @@ module TencentCosSdk
 
         def get_http_string
             http_string  = http_method + "\n"
-            http_string += uri + "\n"
+            http_string += TencentCosSdk.uri(@path) + "\n"
             http_string += get_params + "\n"
             http_string += get_headers + "\n"
         end

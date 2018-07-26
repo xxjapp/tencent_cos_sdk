@@ -9,27 +9,21 @@ module TencentCosSdk
         # TencentCosSdk.put '1/abc.txt', file: './xyz.txt'
         #
         def put path, options = {}
-            Request.new(options.merge http_method: 'put', uri: uri(path), sign: true).execute
+            Request.new(options.merge http_method: 'put', path: path, sign: true).execute
         end
 
         #
         # TencentCosSdk.get '1/abc.txt'
         #
         def get path, options = {}
-            Request.new(options.merge http_method: 'get', uri: uri(path)).execute
+            Request.new(options.merge http_method: 'get', path: path).execute
         end
 
         #
         # TencentCosSdk.delete '1/abc.txt'
         #
         def delete path, options = {}
-            Request.new(options.merge http_method: 'delete', uri: uri(path), sign: true).execute
-        end
-
-    private
-
-        def uri path
-            File.join TencentCosSdk.conf.parent_path, path
+            Request.new(options.merge http_method: 'delete', path: path, sign: true).execute
         end
     end
 end
