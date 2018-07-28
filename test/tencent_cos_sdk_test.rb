@@ -71,7 +71,8 @@ class TencentCosSdkTest < Minitest::Test
             path: 'uploads/micropost/picture/34/zh-CN.png',
             file: __FILE__,
             sign: true,
-            sign_time: '1532755144;1532762344'
+            sign_time: '1532755144;1532762344',
+            log_debug: true
 
         assert_equal '0ee22566446b933e52d716fe7bd3fdae4e49b9fa', request.description.match(%r(q-signature=(\w+)))[1]
     end
