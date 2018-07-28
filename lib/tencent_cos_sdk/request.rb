@@ -6,8 +6,11 @@ module TencentCosSdk
     class Request
         attr_accessor :http_method, :path, :headers, :body, :file
         attr_accessor :response, :time_used
+        attr_accessor :options
 
         def initialize options
+            self.options        = options
+
             self.http_method    = options[:http_method]
             self.path           = options[:path]
             self.headers        = options[:headers] || {}
@@ -54,8 +57,6 @@ module TencentCosSdk
 
             response
         end
-
-    private
 
         def description
             s = "\n\n"

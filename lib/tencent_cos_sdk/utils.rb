@@ -14,7 +14,8 @@ module TencentCosSdk
 
     class Request
         def get_authorization
-            sign_time           = "#{Time.now.to_i - 3600};#{Time.now.to_i + 3600}"
+            sign_time           = options[:sign_time] || "#{Time.now.to_i - 3600};#{Time.now.to_i + 3600}"
+
             sign_key            = OpenSSL::HMAC.hexdigest('sha1', TencentCosSdk.conf.secret_key, sign_time)
             http_string         = get_http_string
             sha1ed_http_string  = Digest::SHA1.hexdigest http_string
