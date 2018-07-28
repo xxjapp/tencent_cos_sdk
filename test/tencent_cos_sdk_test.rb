@@ -46,7 +46,7 @@ class TencentCosSdkTest < Minitest::Test
         assert_equal 204, response.code
     end
 
-    def test_get_authorization_1
+    def test_get_authorization
         TencentCosSdk.configure do |conf|
             conf.parent_path    = '/aimee'
         end
@@ -59,21 +59,5 @@ class TencentCosSdkTest < Minitest::Test
             sign_time: '1532755230;1532762430'
 
         assert_equal 'a75998e6a65e4f1be4063ab778d71c2e589ad6db', request.description.match(%r(q-signature=(\w+)))[1]
-    end
-
-    def test_get_authorization_2
-        TencentCosSdk.configure do |conf|
-            conf.parent_path    = '/aimee'
-        end
-
-        request = TencentCosSdk::Request.new \
-            http_method: 'put',
-            path: 'uploads/micropost/picture/34/zh-CN.png',
-            file: __FILE__,
-            sign: true,
-            sign_time: '1532755144;1532762344',
-            log_debug: true
-
-        assert_equal '0ee22566446b933e52d716fe7bd3fdae4e49b9fa', request.description.match(%r(q-signature=(\w+)))[1]
     end
 end

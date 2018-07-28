@@ -60,4 +60,5 @@ Everyone interacting in the TencentCosSdk project’s codebases, issue trackers,
 
 ## Links
 
-* [ruby gem tencent_cos_sdk](https://rubygems.org/gems/tencent_cos_sdk)
+* [ruby gem tencent_cos_sdk](https://github.com/xxjapp/tencent_cos_sdk)
+* [ruby gem carrierwave-tencent_cos](https://github.com/xxjapp/carrierwave-tencent_cos)

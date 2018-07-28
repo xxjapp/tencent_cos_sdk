@@ -13,29 +13,13 @@ module TencentCosSdk
     end
 
     class Request
-        def log_debug *values
-            p values if options[:log_debug]
-        end
-
         def get_authorization
             sign_time           = options[:sign_time] || "#{Time.now.to_i - 3600};#{Time.now.to_i + 3600}"
-            log_debug '=>', sign_time
-
-            log_debug '[', TencentCosSdk.conf.secret_key, ']'
             sign_key            = OpenSSL::HMAC.hexdigest('sha1', TencentCosSdk.conf.secret_key, sign_time)
-            log_debug '=>', sign_key
-
             http_string         = get_http_string
-            log_debug '=>', http_string
-
             sha1ed_http_string  = Digest::SHA1.hexdigest http_string
-            log_debug '=>', sha1ed_http_string
-
             string_to_sign      = "sha1\n#{sign_time}\n#{sha1ed_http_string}\n"
-            log_debug '=>', string_to_sign
-
             signature           = OpenSSL::HMAC.hexdigest('sha1', sign_key, string_to_sign)
-            log_debug '=>', signature
 
             {
                 'q-sign-algorithm'  => 'sha1',
