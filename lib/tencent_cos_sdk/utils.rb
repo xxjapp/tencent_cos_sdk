@@ -41,14 +41,20 @@ module TencentCosSdk
             http_string += get_headers + "\n"
         end
 
-        # NOTE: 暂不需要
         def get_params
-            ''
+            return '' if !params
+
+            params.map do |k, v|
+                "#{k.downcase}=#{CGI::escape(v)}"
+            end.sort.join('&')
         end
 
-        # NOTE: 暂不需要
         def get_param_list
-            ''
+            return '' if !params
+
+            params.map do |k, v|
+                k.downcase
+            end.sort.join(';')
         end
 
         def get_headers

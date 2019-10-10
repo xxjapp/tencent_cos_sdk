@@ -4,7 +4,7 @@ require 'tencent_cos_sdk/utils'
 
 module TencentCosSdk
     class Request
-        attr_accessor :http_method, :path, :headers, :body, :file
+        attr_accessor :http_method, :path, :headers, :params, :body, :file
         attr_accessor :response, :time_used
         attr_accessor :options
 
@@ -14,6 +14,7 @@ module TencentCosSdk
             self.http_method    = options[:http_method]
             self.path           = options[:path]
             self.headers        = options[:headers] || {}
+            self.params         = options[:params]
             self.body           = options[:body]
             self.file           = options[:file]
 
@@ -34,6 +35,7 @@ module TencentCosSdk
                     verify_ssl: false
                 }
 
+                options[:headers][:params] = params if params
                 options[:payload] = body            if body
                 options[:payload] = IO.binread file if file
 
