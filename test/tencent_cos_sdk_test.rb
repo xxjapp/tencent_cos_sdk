@@ -39,6 +39,13 @@ class TencentCosSdkTest < Minitest::Test
         assert_equal 200, response.code
     end
 
+    def test_get_with_params
+        TencentCosSdk.put @path, body: 'abc123'
+
+        response = TencentCosSdk.get @path, params: { prefix: "#{File.dirname(@path)}/", delimiter: '/' }
+        assert_equal 200, response.code
+    end
+
     def test_delete
         TencentCosSdk.put @path, body: 'abc123'
 
