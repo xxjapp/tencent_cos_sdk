@@ -2,40 +2,44 @@ PATH
   remote: .
   specs:
     tencent_cos_sdk (0.1.0)
+      colorize (~> 0.8)
+      openssl (~> 2.1)
+      rest-client (~> 2.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
     colorize (0.8.1)
-    domain_name (0.5.20180417)
+    domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    mime-types (3.1)
+    ipaddr (1.2.2)
+    mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0521)
+    mime-types-data (3.2019.1009)
     minitest (5.11.3)
     netrc (0.11.0)
-    openssl (2.1.1)
-    rake (10.5.0)
-    rest-client (2.0.2)
+    openssl (2.1.2)
+      ipaddr
+    rake (13.0.1)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.5)
+    unf_ext (0.0.7.6)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler (~> 1.16)
-  colorize (~> 0.8)
   minitest (~> 5.0)
-  openssl (~> 2.1)
-  rake (~> 10.0)
-  rest-client (~> 2.0)
+  rake (~> 13.0)
   tencent_cos_sdk!
 
 BUNDLED WITH
