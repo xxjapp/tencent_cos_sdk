@@ -4,7 +4,7 @@ require 'openssl'
 module TencentCosSdk
     class << self
         def uri(path)
-            "#{TencentCosSdk.conf.parent_path.to_s}/#{path}"
+            URI.encode "#{TencentCosSdk.conf.parent_path.to_s}/#{path}"
         end
 
         def url(path)
