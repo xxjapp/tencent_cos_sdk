@@ -3,7 +3,7 @@ PATH
   specs:
     tencent_cos_sdk (0.1.0)
       colorize (~> 0.8)
-      openssl (~> 2.1)
+      openssl (>= 2.1, < 4.0)
       rest-client (~> 2.0)
 
 GEM
@@ -13,16 +13,14 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     http-accept (1.7.0)
-    http-cookie (1.0.3)
+    http-cookie (1.0.5)
       domain_name (~> 0.5)
-    ipaddr (1.2.2)
-    mime-types (3.3.1)
+    mime-types (3.4.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2019.1009)
+    mime-types-data (3.2023.0218.1)
     minitest (5.11.3)
     netrc (0.11.0)
-    openssl (2.1.2)
-      ipaddr
+    openssl (3.1.0)
     rake (13.0.1)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
@@ -31,7 +29,7 @@ GEM
       netrc (~> 0.8)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.6)
+    unf_ext (0.0.8.2)
 
 PLATFORMS
   ruby
